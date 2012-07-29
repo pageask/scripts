@@ -21,3 +21,7 @@ export M2_HOME=$TOOLS_HOME/maven/apache-maven-3.0.4
 export M2=$M2_HOME/bin
 #export MAVEN_OPTS="-Xms256m -Xmx512m"
 export PATH=$M2:$PATH
+
+export APKTOOL_HOME=$TOOLS_HOME/apktool
+export PATH=$APKTOOL_HOME:$PATH
+
