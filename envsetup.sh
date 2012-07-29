@@ -25,3 +25,11 @@ export PATH=$M2:$PATH
 export APKTOOL_HOME=$TOOLS_HOME/apktool
 export PATH=$APKTOOL_HOME:$PATH
 
+export DEX2JAR_HOME=$TOOLS_HOME/dex2jar
+export PATH=$DEX2JAR_HOME:$PATH
+
+export JDGUI_HOME=$TOOLS_HOME/jd-gui
+export PATH=$JDGUI_HOME:$PATH
+
+export ANDROIDSDK_HOME=$TOOLS_HOME/android-sdks
+export PATH=$ANDROIDSDK_HOME/tools:$PATH
