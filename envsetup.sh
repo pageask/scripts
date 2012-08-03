@@ -31,5 +31,5 @@ export PATH=$DEX2JAR_HOME:$PATH
 export JDGUI_HOME=$TOOLS_HOME/jd-gui
 export PATH=$JDGUI_HOME:$PATH
 
-export ANDROIDSDK_HOME=$TOOLS_HOME/android-sdks
-export PATH=$ANDROIDSDK_HOME/tools:$PATH
+export ANDROID_HOME=$TOOLS_HOME/android-sdks
+export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
