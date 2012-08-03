@@ -33,3 +33,6 @@ export PATH=$JDGUI_HOME:$PATH
 
 export ANDROID_HOME=$TOOLS_HOME/android-sdks
 export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+
+export ANT_HOME=$TOOLS_HOME/ant
+export PATH=$ANT_HOME/bin:$PATH
