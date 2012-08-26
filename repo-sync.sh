@@ -6,7 +6,7 @@
 #
 
 repo sync
-while [ $? ne 0 ]
-then
-  repo sync
+while [ $? != 0 ]
 do
+  repo sync
+done
