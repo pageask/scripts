@@ -36,3 +36,5 @@ export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
 
 export ANT_HOME=$TOOLS_HOME/ant
 export PATH=$ANT_HOME/bin:$PATH
+
+export USE_CCACHE=1
