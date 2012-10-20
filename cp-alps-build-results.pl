@@ -1,11 +1,12 @@
 #!/usr/bin/perl
 
-if ($#ARGV + 1 != 1) {
-    print "cp-alps-build-results.pl mht75_ics\n";
+if ($#ARGV + 1 != 2) {
+    print "cp-alps-build-results.pl mht75_ics gt-i9300-75-d\n";
     exit 0;
 }
 
 $project = $ARGV[0];
+$branch = $ARGV[1];
 
 $results_dir = "/home/pageask/results_dir/";
 
@@ -39,7 +40,7 @@ $dir = "out/target/product/$project/";
 
 my($sec, $min, $hour, $mday, $mon, $year) = localtime(time);
 $date_time_dir = (sprintf "%4.4d-%2.2d-%2.2d-%2.2d-%2.2d-%2.2d", $year+1900, $mon+1, $mday, $hour, $min, $sec);
-$results_dir = "${results_dir}${date_time_dir}";
+$results_dir = "${results_dir}${branch}-${date_time_dir}";
 #print $results_dir;
 
 system("mkdir -p $results_dir") if (!-d $results_dir);
