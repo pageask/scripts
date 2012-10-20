@@ -1,9 +1,14 @@
 #!/usr/bin/perl
 
-$project = "mht75_ics"; #mtk75_ics mht75_ics
-$cmd = "checkout"; #list rm clone checkout
-$cmd_target = "all_repos"; #driver_repos ui_repos all_repos
-$cmd_arg = "gt-i9300 75 d";
+if ($#ARGV + 1 != 4) {
+    print "mg-alps-repos.pl mht75_ics checkout all_repos gt-i9300,75,d\n";
+    exit 0;
+}
+
+$project = $ARGV[0]; #mtk75_ics mht75_ics
+$cmd = $ARGV[1]; #list rm clone checkout
+$cmd_target = $ARGV[2]; #driver_repos ui_repos all_repos
+$cmd_arg = $ARGV[3]; #gt-i9300,75,d
 
 $repo_dir = "/home/pageask/repositories/alps/";
 @driver_repos = 
@@ -104,7 +109,7 @@ if ($cmd eq "clone") {
 }
 
 if ($cmd eq "checkout") {
-    @args = split(" ", $cmd_arg);
+    @args = split(",", $cmd_arg);
     if ($cmd_target eq "driver_repos" || $cmd_target eq "all_repos") {
         foreach $repo (@driver_repos) {
             if ( -e $repo ) {
