@@ -6,38 +6,39 @@ if ($#ARGV + 1 != 4) {
 }
 
 $project = $ARGV[0]; #mtk75_ics mht75_ics
-$cmd = $ARGV[1]; #list rm clone checkout
+$cmd = $ARGV[1]; #list rm clone checkout pull
 $cmd_target = $ARGV[2]; #driver_repos ui_repos all_repos
 $cmd_arg = $ARGV[3]; #gt-i9300,75,d
 
 $repo_dir = "/home/pageask/repositories/alps/";
 @driver_repos = 
   (
+    "mediatek/config/$project",
+    "mediatek/custom/common/cgen",
+    "mediatek/custom/common/hal",
     "mediatek/custom/common/kernel",
+    "mediatek/custom/common/modem",
     "mediatek/custom/common/uboot",
     "mediatek/custom/$project",
     "mediatek/build/tools",
-    "mediatek/config/$project",
-    "mediatek/custom/common/modem",
-    "mediatek/custom/common/cgen",
-    "mediatek/source/packages/EngineerMode",
-    "mediatek/source/external/boot_logo_updater",
-    "mediatek/custom/common/hal",
     "mediatek/platform",
+    "mediatek/source/external/boot_logo_updater",
     "mediatek/source/kernel/drivers",
+    "mediatek/source/packages/EngineerMode",
   );
 @ui_repos = 
   (
-    "frameworks/base/packages/SystemUI",
-    "frameworks/base/core",
     "build",
+    "frameworks/base/core",
     "frameworks/base/data",
+    "frameworks/base/packages/SystemUI",
     "frameworks/base/policy",
+    "frameworks/base/services",
     "packages/apps/Contacts",
-    "packages/apps/Phone",
     "packages/apps/DeskClock",
     "packages/apps/Launcher2",
     "packages/apps/Mms",
+    "packages/apps/Phone",
     "packages/apps/Settings",
   );
 
@@ -131,6 +132,25 @@ if ($cmd eq "checkout") {
             if ( -e $repo ) {
                 print "(cd ${repo} && git checkout $args[0])\n";
                 system("(cd ${repo} && git checkout $args[0])");
+            }
+        }
+    }
+}
+
+if ($cmd eq "pull") {
+    if ($cmd_target eq "driver_repos" || $cmd_target eq "all_repos") {
+        foreach $repo (@driver_repos) {
+            if ( -e $repo ) {
+                print "(cd ${repo} && git pull)\n";
+                system("(cd ${repo} && git pull)");
+            }
+        }
+    }
+    if ($cmd_target eq "ui_repos" || $cmd_target eq "all_repos") {
+        foreach $repo (@ui_repos) {
+            if ( -e $repo ) {
+                print "(cd ${repo} && git pull)\n";
+                system("(cd ${repo} && git pull)");
             }
         }
     }
