@@ -9,10 +9,11 @@ $project = $ARGV[0];
 $branch = $ARGV[1];
 $build_variant = $ARGV[2];
 
-$results_dir = "/home/pageask/results_dir/";
+$database_modem_file = "mediatek/custom/common/modem/${project}_hspa/BPLGUInfoCustomApp*";
+$database_ap_file = "mediatek/source/cgen/APDB_*_";
 
-$dir = "out/target/product/$project/";
-@files = 
+$bin_src_dir = "out/target/product/$project";
+@bin_src_files = 
   (
     "android-info.txt",
     "cache.img",
@@ -39,13 +40,24 @@ $dir = "out/target/product/$project/";
     "userdata.img",
   );
 
+$results_dir = "/home/pageask/results_dir";
 my($sec, $min, $hour, $mday, $mon, $year) = localtime(time);
-$date_time_dir = (sprintf "%4.4d-%2.2d-%2.2d-%2.2d-%2.2d-%2.2d", $year+1900, $mon+1, $mday, $hour, $min, $sec);
-$results_dir = "${results_dir}${branch}-${date_time_dir}-${build_variant}";
-#print $results_dir;
+$date_time = (sprintf "%4.4d-%2.2d-%2.2d-%2.2d-%2.2d-%2.2d", $year+1900, $mon+1, $mday, $hour, $min, $sec);
+$bin_database_dir = "${branch}-${date_time}-${build_variant}";
+$bin_database_dir = "${results_dir}/${bin_database_dir}";
+#print "$bin_database_dir\n";
+#exit 0;
 
-system("mkdir -p $results_dir") if (!-d $results_dir);
-foreach $file (@files)
+$bin_dir = "${bin_database_dir}/bin";
+system("mkdir -p $bin_dir") if (!-d $bin_dir);
+foreach $file (@bin_src_files)
 {
-    system("cp $dir$file $results_dir");
+    $bin_src_file = "${bin_src_dir}/$file";
+    system("cp $bin_src_file $bin_dir");
 }
+
+$database_dir = "${bin_database_dir}/database";
+system("mkdir -p $database_dir") if (!-d $database_dir);
+system("cp $database_modem_file $database_dir");
+system("cp $database_ap_file $database_dir");
+
