@@ -1,5 +1,11 @@
 #!/bin/bash -
 
+if [ $# != 1 ]
+then
+  echo "repo-alps.sh branch"
+  exit
+fi
+
 repositories_url="ssh://pageask@192.168.1.158/home/pageask/repositories";
 manifests_url="$repositories_url/alps/manifests.git";
 branch=$1;
