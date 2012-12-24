@@ -17,6 +17,9 @@ my($sec, $min, $hour, $mday, $mon, $year) = localtime(time);
 my $date_time = (sprintf "%4.4d-%2.2d-%2.2d-%2.2d-%2.2d-%2.2d", $year+1900, $mon+1, $mday, $hour, $min, $sec);
 
 my $results_dir = "/home/pageask/results_dir";
+if ($build_variant eq "eng") {
+    $results_dir = "/home/pageask/share";
+}
 
 my $bin_database_dir = "${branch}-${date_time}-${build_variant}";
 my $bin_database_dir = "${results_dir}/${bin_database_dir}";
