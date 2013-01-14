@@ -13,10 +13,13 @@ project=$1
 branch=$2
 build_variant=$3
 
-repo forall -c "git stash save"
-repo sync
-repo forall -c "git stash pop"
+#repo forall -c "git stash save"
 repo forall -c "git clean -fd"
+repo forall -c "git checkout ."
+repo sync
+repo forall -c "git clean -fd"
+repo forall -c "git checkout ."
+#repo forall -c "git stash pop"
 ./mk update-api
 ./mk -o=TARGET_BUILD_VARIANT=$build_variant $project n
 cp-alps-build-results.pl $project $branch $build_variant
