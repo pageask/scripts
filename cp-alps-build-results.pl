@@ -1,12 +1,12 @@
 #!/usr/bin/perl
 
 if ($#ARGV + 1 != 3) {
-    print "cp-alps-build-results.pl project branch build_variant\n";
+    print "cp-alps-build-results.pl branch project build_variant\n";
     exit 0;
 }
 
-$project = $ARGV[0];
-$branch = $ARGV[1];
+$branch = $ARGV[0];
+$project = $ARGV[1];
 $build_variant = $ARGV[2];
 
 my $modem_database_file = "mediatek/custom/common/modem/${project}_hspa/BPLGUInfoCustomApp*";
