@@ -1,20 +1,21 @@
 #!/usr/bin/perl
 
-if ($#ARGV + 1 != 3) {
-    print "cp-alps-build-results.pl branch project build_variant\n";
+if ($#ARGV + 1 != 4) {
+    print "cp-alps-build-results.pl branch project build_variant date_time\n";
     exit 0;
 }
 
 $branch = $ARGV[0];
 $project = $ARGV[1];
 $build_variant = $ARGV[2];
+$date_time = $ARGV[3];
 
 my $modem_database_file = "mediatek/custom/common/modem/${project}_hspa/BPLGUInfoCustomApp*";
 my $ap_database_file = "mediatek/source/cgen/APDB*";
 my @bin_files = <out/target/product/$project/*>;
 
-my($sec, $min, $hour, $mday, $mon, $year) = localtime(time);
-my $date_time = (sprintf "%4.4d-%2.2d-%2.2d-%2.2d-%2.2d-%2.2d", $year+1900, $mon+1, $mday, $hour, $min, $sec);
+#my($sec, $min, $hour, $mday, $mon, $year) = localtime(time);
+#my $date_time = (sprintf "%4.4d-%2.2d-%2.2d-%2.2d-%2.2d-%2.2d", $year+1900, $mon+1, $mday, $hour, $min, $sec);
 
 my $results_dir = "/home/pageask/results_dir";
 if ($build_variant eq "eng") {
