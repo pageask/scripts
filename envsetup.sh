@@ -8,7 +8,7 @@
 export TOOLS_HOME=/home/pageask/tools
 export PATH=$TOOLS_HOME:$PATH
 
-export JAVA_HOME=$TOOLS_HOME/java/jdk1.6.0_31
+export JAVA_HOME=$TOOLS_HOME/jdk1.6.0_39
 export PATH=$JAVA_HOME/bin:$PATH
 
 export SCRIPTS_HOME=$TOOLS_HOME/scripts
@@ -41,3 +41,8 @@ export SMALI_HOME=$TOOLS_HOME/smali
 export PATH=$SMALI_HOME:$PATH
 
 export USE_CCACHE=1
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export PATH="$TOOLS_HOME/depot_tools:$PATH"
